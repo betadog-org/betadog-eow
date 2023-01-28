@@ -19,5 +19,5 @@ jobs:
               --branch=alpha --depth=1 --single-branch
           cd __tmp1
           cp .gitconfig .git/config
-          sh jslint_ci.sh shBetadogEow
+          sh jslint_ci.sh shBetadogEod
 
