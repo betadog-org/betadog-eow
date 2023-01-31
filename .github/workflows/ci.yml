@@ -1,6 +1,9 @@
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
 name: cron
 on:
+  push:
+    branches:
+      - alpha
   schedule:
     # * is a special character in YAML so you have to quote this string
     # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.htm
@@ -17,14 +20,11 @@ jobs:
   job1:
     runs-on: macos-latest
     steps:
-      - run: |
-          curl -o ~/myci2.sh -s \
-              https://raw.githubusercontent.com/kaizhu256/myci2/alpha/myci2.sh
-          . ~/myci2.sh
-          shMyciInit
-          sh ~/jslint_ci.sh shGitCmdWithGithubToken clone \
-              https://github.com/kaizhu256/betadog __tmp1 \
-              --branch=alpha --depth=1 --single-branch
-          cd __tmp1
-          cp .gitconfig .git/config
-          sh jslint_ci.sh shBetadogEod
+      - run: echo "$(date -u +'%Y-%m-%d %TZ')"
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+        with:
+          repository: kaizhu256/betadog
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
+      - run: sh jslint_ci.sh shGithubPushBackupAndSquash origin alpha 100
+      - run: sh jslint_ci.sh shBetadogEod
