@@ -26,5 +26,7 @@ jobs:
         with:
           repository: kaizhu256/betadog
           token: ${{ secrets.MY_GITHUB_TOKEN }}
+      # cleanup repo
       - run: sh jslint_ci.sh shGithubPushBackupAndSquash origin alpha 100
-      - run: sh jslint_ci.sh shBetadogEod
+      # run task-cron
+      - run: sh jslint_ci.sh shCron
