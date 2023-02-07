@@ -28,6 +28,6 @@ jobs:
           repository: ${{ env.MY_GITHUB_REPOSITORY }}
           token: ${{ secrets.MY_GITHUB_TOKEN }}
       # cleanup repo
-      - run: sh jslint_ci.sh shGithubPushBackupAndSquash origin alpha 100
+      - run: sh jslint_ci.sh shGitCommitPushOrSquash "" 100
       # run cron
       - run: sh jslint_ci.sh shCronCustom
