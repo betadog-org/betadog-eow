@@ -27,6 +27,14 @@ jobs:
         with:
           repository: ${{ env.MY_GITHUB_REPOSITORY }}
           token: ${{ secrets.MY_GITHUB_TOKEN }}
+      # https://github.com/actions/setup-node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      # https://github.com/actions/setup-python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       # cleanup repo
       - run: sh jslint_ci.sh shGitCommitPushOrSquash "" 100
       # run cron
