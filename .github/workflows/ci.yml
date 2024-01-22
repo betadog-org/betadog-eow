@@ -19,7 +19,7 @@ env:
   MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 jobs:
   job1:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     steps:
       - run: echo "$(date -u +"%Y-%m-%d %TZ")" # "
       # https://github.com/actions/checkout
