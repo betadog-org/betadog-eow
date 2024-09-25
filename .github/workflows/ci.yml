@@ -13,9 +13,11 @@ on:
     # month of the year [1,12]
     # day of the week ([0,6] with 0=sunday)
     #
-    # 09:30 nyse - 13:30/14:30 utc
-    # 13:00 nyse - 17:00/18:00 utc
-    # 16:00 nyse - 20:00/21:00 utc
+    # 04:00 nyc - 08:00/09:00 utc
+    # 09:30 nyc - 13:30/14:30 utc
+    # 13:00 nyc - 17:00/18:00 utc
+    # 16:00 nyc - 20:00/21:00 utc
+    # 20:00 nyc - 24:00/25:00 utc
     #
     - cron: "30 11-17,21 * * 1-5"
   workflow_dispatch:
